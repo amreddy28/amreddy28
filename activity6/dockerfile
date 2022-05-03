@@ -1,0 +1,10 @@
+FROM ubuntu:21.10
+ARG user=aprna
+ARG group=l2support
+ARG uid=1000
+ARG gid=1000
+ENV USER_HOME_DIR /home/aprna
+RUN groupadd -g ${gid} ${group} && useradd -d "${USER_HOME_DIR}" -u ${uid} -g${gid} -m -s /bin/bash ${user}
+USER ${user}
+WORKDIR ${USER_HOME_DIR}
+CMD ["echo","gellodockerfile"]
